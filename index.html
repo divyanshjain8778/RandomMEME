@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="meme">
+        <img  id="img" src="" alt="" height="500", width="500">
+        <button type="button" id="next">next</button>
+      </div>
+    </div>
+  </body>
+  <script>
+  let nextbtn=document.getElementById('next');
+
+  let data=fetch('https://meme-api.herokuapp.com/gimme')
+      .then(res => res.json())
+      .then((out) => {
+          console.log('Output: ', out.url);
+          document.getElementById('img').src=out.url;
+
+  }).catch(err => console.error(err));
+ nextbtn.addEventListener('click', () => {
+    let data=fetch('https://meme-api.herokuapp.com/gimme')
+       .then(res => res.json())
+       .then((out) => {
+           console.log('Output: ', out.url);
+           document.getElementById('img').src=out.url;
+
+   }).catch(err => console.error(err));
+ })
+  </script>
+</html>
